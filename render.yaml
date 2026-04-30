@@ -4,12 +4,9 @@ services:
     env: node
     region: singapore
     plan: free
-    rootDir: backend
     buildCommand: |
-      npm install
-      cd ../frontend && npm install && npm run build
-      cp -r ../frontend/dist ./public
-    startCommand: node server.js
+      cd frontend && npm install && npm run build && cd ../backend && npm install && cp -r ../frontend/dist ./public
+    startCommand: node backend/server.js
     envVars:
       - key: NODE_ENV
         value: production
